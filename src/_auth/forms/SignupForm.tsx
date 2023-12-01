@@ -12,12 +12,17 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SignUpInputs, SignUpSchema } from '@/lib/validation/sign-up.schema.ts';
 import Loader from '@/components/shared/Loader.tsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { paths } from '@/routes/paths.ts';
-import { createUserAccount } from '@/lib/appwrite/api.ts';
+import { useToast } from '@/components/ui/use-toast';
+import { useCreateUserAccountMutation, useSignInAccountMutation } from '@/lib/react-query/mutations.ts';
+import { useUserContext } from '@/context/AuthContext.tsx';
 
 const SignupForm = () => {
-	const isLoading = false;
+	const {toast} = useToast();
+	const navigate = useNavigate();
+	const {checkAuthUser, isLoading: isUserLoading} = useUserContext();
+
 	const form = useForm<SignUpInputs>({
 		resolver: zodResolver(SignUpSchema),
 		defaultValues: {
@@ -28,10 +33,35 @@ const SignupForm = () => {
 		},
 	})
 
-	const onSubmit = async (values: SignUpInputs)=> {
-		const newUser = await createUserAccount(values);
+	const {mutateAsync: createUserAccount, isPending: isCreateUserAccountLoading} = useCreateUserAccountMutation();
+	const {mutateAsync: signInAccount, isPending: isSignInAccountLoading} = useSignInAccountMutation();
 
-		console.log(newUser)
+
+	const onSubmit = async (values: SignUpInputs) => {
+		const newUser = await createUserAccount(values);
+		if (!newUser) {
+			return toast({
+				title: 'Sign up failed. Pls try again',
+			})
+		}
+		const session = await signInAccount({
+			email: values.email,
+			password: values.password
+		})
+
+		if (!session) {
+			return toast({
+				title: 'Sign up failed. Pls try again',
+			})
+		}
+
+		const isLogIn = await checkAuthUser();
+		if (isLogIn) {
+			form.reset();
+			navigate(paths.home);
+		} else {
+			return toast({title: 'Sign up failed. Pls try again'})
+		}
 	}
 
 	return (
@@ -39,7 +69,7 @@ const SignupForm = () => {
 			<div className="sm:w-420 flex-center flex-col">
 				<img src="/assets/images/logo.svg" alt="logo" />
 
-				<h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+				<h2 className="h3-bold md:h2-bold pt-5 sm:pt-8">
 					Create a new account
 				</h2>
 				<p className="text-light-3 small-medium md:base-regular mt-2">
@@ -99,7 +129,7 @@ const SignupForm = () => {
 						)}
 					/>
 					<Button type="submit" className="shad-button_primary">
-						{isLoading ? (
+						{isCreateUserAccountLoading ? (
 							<div className="flex-center gap-2">
 								<Loader /> Loading...
 							</div>

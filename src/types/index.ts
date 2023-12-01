@@ -1,3 +1,22 @@
+import { Dispatch, SetStateAction } from 'react';
+
+export type IAuthStateUser = {
+	id: string;
+	name: string;
+	username: string;
+	email: string;
+	imageUrl: string;
+	bio: string ;}
+
+export type IAuthState = {
+	user: IAuthStateUser;
+	isLoading: boolean;
+	isAuthenticated: boolean;
+	setUser: Dispatch<SetStateAction<IAuthStateUser>>;
+	setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
+	checkAuthUser: () => Promise<boolean>;
+};
+
 export type INavLink = {
 	imgURL: string;
 	route: string;
@@ -46,3 +65,11 @@ export type INewUser = {
 	username: string;
 	password: string;
 };
+
+export type INewUserToDB = {
+	accountId: string;
+	email: string;
+	name: string;
+	imageUrl: URL;
+	username?: string;
+}
