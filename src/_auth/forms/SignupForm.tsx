@@ -14,6 +14,7 @@ import { SignUpInputs, SignUpSchema } from '@/lib/validation/sign-up.schema.ts';
 import Loader from '@/components/shared/Loader.tsx';
 import { Link } from 'react-router-dom';
 import { paths } from '@/routes/paths.ts';
+import { createUserAccount } from '@/lib/appwrite/api.ts';
 
 const SignupForm = () => {
 	const isLoading = false;
@@ -27,8 +28,10 @@ const SignupForm = () => {
 		},
 	})
 
-	function onSubmit(values: SignUpInputs) {
-		console.log(values)
+	const onSubmit = async (values: SignUpInputs)=> {
+		const newUser = await createUserAccount(values);
+
+		console.log(newUser)
 	}
 
 	return (
