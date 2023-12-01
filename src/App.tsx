@@ -1,8 +1,12 @@
+import './globals.css';
+import AppRoutes from './routes/AppRoutes.tsx';
 
 const App = () => {
 
 	return (
-		<div>App</div>
+		<main className="flex h-screen">
+			<AppRoutes />
+		</main>
 	);
 };
 
