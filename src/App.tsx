@@ -1,5 +1,5 @@
-import './globals.css';
 import AppRoutes from './routes/AppRoutes.tsx';
+import './globals.css';
 
 const App = () => {
 
