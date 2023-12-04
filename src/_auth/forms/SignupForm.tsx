@@ -15,8 +15,8 @@ import Loader from '@/components/shared/Loader.tsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { paths } from '@/routes/paths.ts';
 import { useToast } from '@/components/ui/use-toast';
-import { useCreateUserAccountMutation, useSignInAccountMutation } from '@/lib/react-query/mutations.ts';
 import { useUserContext } from '@/context/AuthContext.tsx';
+import { useCreateUserAccountMutation, useSignInAccountMutation } from '@/lib/react-query/queries.ts';
 
 const SignupForm = () => {
 	const {toast} = useToast();

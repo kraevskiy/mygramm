@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { paths } from '@/routes/paths.ts';
 import { Button } from '@/components/ui/button.tsx';
-import { useSignOutAccountMutation } from '@/lib/react-query/mutations.ts';
 import { useEffect } from 'react';
 import { useUserContext } from '@/context/AuthContext.tsx';
+import { useSignOutAccountMutation } from '@/lib/react-query/queries.ts';
 
 const TopBar = () => {
 	const {mutate: signOut, isSuccess} = useSignOutAccountMutation();

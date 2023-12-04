@@ -14,9 +14,9 @@ import Loader from '@/components/shared/Loader.tsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { paths } from '@/routes/paths.ts';
 import { useToast } from '@/components/ui/use-toast';
-import { useSignInAccountMutation } from '@/lib/react-query/mutations.ts';
 import { useUserContext } from '@/context/AuthContext.tsx';
 import { SignInInputs, SignInSchema } from '@/lib/validation/sign-in.schema.ts';
+import { useSignInAccountMutation } from '@/lib/react-query/queries.ts';
 
 const SigninForm = () => {
 	const {toast} = useToast();
