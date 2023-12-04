@@ -81,7 +81,9 @@ export async function createPost(post: INewPost) {
 		// Upload file to appwrite storage
 		const uploadedFile = await uploadFile(post.file[0]);
 
-		if (!uploadedFile) throw Error;
+		if (!uploadedFile) {
+			throw Error;
+		}
 
 		// Get file url
 		const fileUrl = getFilePreview(uploadedFile.$id);
@@ -144,7 +146,9 @@ export function getFilePreview(fileId: string) {
 			100
 		);
 
-		if (!fileUrl) throw Error;
+		if (!fileUrl) {
+			throw Error;
+		}
 
 		return fileUrl;
 	} catch (error) {
@@ -172,7 +176,9 @@ export async function searchPosts(searchTerm: string) {
 			[Query.search("caption", searchTerm)]
 		);
 
-		if (!posts) throw Error;
+		if (!posts) {
+			throw Error;
+		}
 
 		return posts;
 	} catch (error) {
@@ -194,7 +200,9 @@ export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
 			queries
 		);
 
-		if (!posts) throw Error;
+		if (!posts) {
+			throw Error;
+		}
 
 		return posts;
 	} catch (error) {
@@ -204,7 +212,9 @@ export async function getInfinitePosts({ pageParam }: { pageParam: number }) {
 
 // ============================== GET POST BY ID
 export async function getPostById(postId?: string) {
-	if (!postId) throw Error;
+	if (!postId) {
+		throw Error;
+	}
 
 	try {
 		const post = await databases.getDocument(
@@ -213,7 +223,9 @@ export async function getPostById(postId?: string) {
 			postId
 		);
 
-		if (!post) throw Error;
+		if (!post) {
+			throw Error;
+		}
 
 		return post;
 	} catch (error) {
@@ -234,7 +246,9 @@ export async function updatePost(post: IUpdatePost) {
 		if (hasFileToUpdate) {
 			// Upload new file to appwrite storage
 			const uploadedFile = await uploadFile(post.file[0]);
-			if (!uploadedFile) throw Error;
+			if (!uploadedFile) {
+				throw Error;
+			}
 
 			// Get new file url
 			const fileUrl = getFilePreview(uploadedFile.$id);
@@ -296,7 +310,9 @@ export async function deletePost(postId?: string, imageId?: string) {
 			postId
 		);
 
-		if (!statusCode) throw Error;
+		if (!statusCode) {
+			throw Error;
+		}
 
 		await deleteFile(imageId);
 
@@ -318,7 +334,9 @@ export async function likePost(postId: string, likesArray: string[]) {
 			}
 		);
 
-		if (!updatedPost) throw Error;
+		if (!updatedPost) {
+			throw Error;
+		}
 
 		return updatedPost;
 	} catch (error) {
@@ -339,7 +357,9 @@ export async function savePost(userId: string, postId: string) {
 			}
 		);
 
-		if (!updatedPost) throw Error;
+		if (!updatedPost) {
+			throw Error;
+		}
 
 		return updatedPost;
 	} catch (error) {
@@ -355,7 +375,9 @@ export async function deleteSavedPost(savedRecordId: string) {
 			savedRecordId
 		);
 
-		if (!statusCode) throw Error;
+		if (!statusCode) {
+			throw Error;
+		}
 
 		return { status: "Ok" };
 	} catch (error) {
@@ -374,7 +396,9 @@ export async function getUserPosts(userId?: string) {
 			[Query.equal("creator", userId), Query.orderDesc("$createdAt")]
 		);
 
-		if (!post) throw Error;
+		if (!post) {
+			throw Error
+		}
 
 		return post;
 	} catch (error) {
@@ -391,7 +415,9 @@ export async function getRecentPosts() {
 			[Query.orderDesc("$createdAt"), Query.limit(20)]
 		);
 
-		if (!posts) throw Error;
+		if (!posts) {
+			throw Error
+		}
 
 		return posts;
 	} catch (error) {
@@ -418,7 +444,9 @@ export async function getUsers(limit?: number) {
 			queries
 		);
 
-		if (!users) throw Error;
+		if (!users) {
+			throw Error;
+		}
 
 		return users;
 	} catch (error) {
@@ -435,7 +463,9 @@ export async function getUserById(userId: string) {
 			userId
 		);
 
-		if (!user) throw Error;
+		if (!user) {
+			throw Error;
+		}
 
 		return user;
 	} catch (error) {
@@ -455,7 +485,9 @@ export async function updateUser(user: IUpdateUser) {
 		if (hasFileToUpdate) {
 			// Upload new file to appwrite storage
 			const uploadedFile = await uploadFile(user.file[0]);
-			if (!uploadedFile) throw Error;
+			if (!uploadedFile) {
+				throw Error;
+			}
 
 			// Get new file url
 			const fileUrl = getFilePreview(uploadedFile.$id);
