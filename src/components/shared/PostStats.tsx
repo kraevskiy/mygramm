@@ -1,6 +1,6 @@
 import { MouseEvent, useEffect } from 'react';
 import { Models } from 'appwrite';
-import { useDeleteSavedPost, useGetCurrentUser, useLikePost, useSavePost } from '@/lib/react-query/queries.ts';
+import { useDeleteSavedPostMutation, useGetCurrentUserQuery, useLikePostMutation, useSavePostMutation } from '@/lib/react-query/queries.ts';
 import { useState } from 'react';
 import { checkIsLiked } from '@/lib/utils.ts';
 import { Loader } from '@/components/shared/index.ts';
@@ -16,11 +16,11 @@ const PostStats = ({post, userId}: PostStatsProps) => {
 	const [likes, setLikes] = useState(likesList);
 	const [isSaved, setIsSaved] = useState(false);
 
-	const {mutate: likePost} = useLikePost();
-	const {mutate: savePost, isPending: isSavingPost} = useSavePost();
-	const {mutate: deleteSavePost, isPending: isDeletingPost} = useDeleteSavedPost();
+	const {mutate: likePost} = useLikePostMutation();
+	const {mutate: savePost, isPending: isSavingPost} = useSavePostMutation();
+	const {mutate: deleteSavePost, isPending: isDeletingPost} = useDeleteSavedPostMutation();
 
-	const {data: currentUser} = useGetCurrentUser();
+	const {data: currentUser} = useGetCurrentUserQuery();
 
 	const savedPostRecord = currentUser?.save.find((record: Models.Document) => record.post.$id === post.$id);
 

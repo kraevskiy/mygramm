@@ -11,7 +11,7 @@ const App = () => {
 		<BrowserRouter>
 			<QueryProvider>
 				<AuthProvider>
-					<main className="flex h-screen">
+					<main className="flex h-screen overflow-y-hidden">
 						<AppRoutes />
 						<Toaster />
 					</main>

@@ -6,19 +6,23 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/components/ui/use-toast";
 import { useUserContext } from "@/context/AuthContext";
 import { FileUploader, Loader } from "@/components/shared";
-import { useCreatePost, useUpdatePost } from "@/lib/react-query/queries";
 import { PostFormInputs, PostValidation } from '@/lib/validation/create-post.schema.ts';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form.tsx';
 import { Textarea } from "../ui/textarea";
 import { Input } from '@/components/ui/input.tsx';
 import { Button } from '@/components/ui/button.tsx';
+import { useCreatePostMutation, useUpdatePostMutation } from '@/lib/react-query/queries.ts';
+import { paths } from '@/routes/paths.ts';
 
-type PostFormProps = {
-	post?: Models.Document;
-	action: "Create" | "Update";
+type Props = {
+	post?: never;
+	action: "Create";
+} | {
+	post: Models.Document;
+	action: "Update";
 };
 
-const PostForm = ({ post, action }: PostFormProps) => {
+const PostForm = ({ post, action }: Props) => {
 	const navigate = useNavigate();
 	const { toast } = useToast();
 	const { user } = useUserContext();
@@ -33,9 +37,9 @@ const PostForm = ({ post, action }: PostFormProps) => {
 	});
 
 	const { mutateAsync: createPost, isPending: isLoadingCreate } =
-		useCreatePost();
+		useCreatePostMutation();
 	const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
-		useUpdatePost();
+		useUpdatePostMutation();
 
 	const handleSubmit = async (value: PostFormInputs) => {
 		if (post && action === "Update") {
@@ -51,7 +55,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 					title: `${action} post failed. Please try again.`,
 				});
 			}
-			return navigate(`/posts/${post.$id}`);
+			return navigate(`${paths.posts}/${post.$id}`);
 		}
 
 		const newPost = await createPost({
@@ -64,7 +68,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 				title: `${action} post failed. Please try again.`,
 			});
 		}
-		navigate("/");
+		navigate(paths.home);
 	};
 
 	return (
