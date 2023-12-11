@@ -10,13 +10,13 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { SignUpInputs, SignUpSchema } from '@/lib/validation/sign-up.schema.ts';
-import Loader from '@/components/shared/Loader.tsx';
+import { SignUpInputs, SignUpSchema } from '@/lib/validation/sign-up.schema';
+import Loader from '@/components/shared/Loader';
 import { Link, useNavigate } from 'react-router-dom';
-import { paths } from '@/routes/paths.ts';
+import { paths } from '@/routes/paths';
 import { useToast } from '@/components/ui/use-toast';
-import { useUserContext } from '@/context/AuthContext.tsx';
-import { useCreateUserAccountMutation, useSignInAccountMutation } from '@/lib/react-query/queries.ts';
+import { useUserContext } from '@/context/AuthContext';
+import { useCreateUserAccountMutation, useSignInAccountMutation } from '@/lib/react-query/queries';
 
 const SignupForm = () => {
 	const {toast} = useToast();

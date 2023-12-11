@@ -1,4 +1,4 @@
-import { useGetCurrentUserQuery } from '@/lib/react-query/queries.ts';
+import { useGetCurrentUserQuery } from '@/lib/react-query/queries';
 import { Models } from 'appwrite';
 import { GridPostList, Loader } from '@/components/shared';
 

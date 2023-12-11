@@ -1,6 +1,6 @@
-import PostForm from '@/components/forms/PostForm.tsx';
+import PostForm from '@/components/forms/PostForm';
 import { useParams } from 'react-router-dom';
-import { useGetPostByIdQuery } from '@/lib/react-query/queries.ts';
+import { useGetPostByIdQuery } from '@/lib/react-query/queries';
 import { Loader } from '@/components/shared';
 
 const EditPost = () => {

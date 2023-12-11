@@ -1,9 +1,9 @@
 import { MouseEvent, useEffect } from 'react';
 import { Models } from 'appwrite';
-import { useDeleteSavedPostMutation, useGetCurrentUserQuery, useLikePostMutation, useSavePostMutation } from '@/lib/react-query/queries.ts';
+import { useDeleteSavedPostMutation, useGetCurrentUserQuery, useLikePostMutation, useSavePostMutation } from '@/lib/react-query/queries';
 import { useState } from 'react';
-import { checkIsLiked } from '@/lib/utils.ts';
-import { Loader } from '@/components/shared/index.ts';
+import { checkIsLiked } from '@/lib/utils';
+import { Loader } from '@/components/shared/index';
 
 type PostStatsProps = {
 	post: Models.Document,

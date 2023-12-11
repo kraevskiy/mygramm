@@ -1,7 +1,7 @@
 import { Models } from 'appwrite';
-import { useUserContext } from '@/context/AuthContext.tsx';
+import { useUserContext } from '@/context/AuthContext';
 import { Link } from 'react-router-dom';
-import { paths } from '@/routes/paths.ts';
+import { paths } from '@/routes/paths';
 import { PostStats } from '@/components/shared';
 
 type GridPostsListProps = {

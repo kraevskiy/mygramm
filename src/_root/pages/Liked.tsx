@@ -1,5 +1,5 @@
 import { GridPostList, Loader } from '@/components/shared';
-import { useGetCurrentUserQuery } from '@/lib/react-query/queries.ts';
+import { useGetCurrentUserQuery } from '@/lib/react-query/queries';
 
 const Liked = () => {
 	const { data: currentUser } = useGetCurrentUserQuery();

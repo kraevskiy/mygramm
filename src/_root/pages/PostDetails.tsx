@@ -1,11 +1,11 @@
-import { useDeletePostMutation, useGetPostByIdQuery } from '@/lib/react-query/queries.ts';
+import { useDeletePostMutation, useGetPostByIdQuery } from '@/lib/react-query/queries';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { Loader, PostStats } from '@/components/shared';
-import { paths } from '@/routes/paths.ts';
-import { multiFormatDateString } from '@/lib/utils.ts';
-import { useUserContext } from '@/context/AuthContext.tsx';
-import { Button } from '@/components/ui/button.tsx';
-import { useToast } from '@/components/ui/use-toast.ts';
+import { paths } from '@/routes/paths';
+import { multiFormatDateString } from '@/lib/utils';
+import { useUserContext } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
 const PostDetails = () => {
 	const {id} = useParams();

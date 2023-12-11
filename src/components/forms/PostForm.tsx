@@ -6,13 +6,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/components/ui/use-toast";
 import { useUserContext } from "@/context/AuthContext";
 import { FileUploader, Loader } from "@/components/shared";
-import { PostFormInputs, PostValidation } from '@/lib/validation/create-post.schema.ts';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form.tsx';
+import { PostFormInputs, PostValidation } from '@/lib/validation/create-post.schema';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from "../ui/textarea";
-import { Input } from '@/components/ui/input.tsx';
-import { Button } from '@/components/ui/button.tsx';
-import { useCreatePostMutation, useUpdatePostMutation } from '@/lib/react-query/queries.ts';
-import { paths } from '@/routes/paths.ts';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useCreatePostMutation, useUpdatePostMutation } from '@/lib/react-query/queries';
+import { paths } from '@/routes/paths';
 
 type Props = {
 	post?: never;

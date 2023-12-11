@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { paths } from '@/routes/paths.ts';
-import { useUserContext } from '@/context/AuthContext.tsx';
+import { paths } from '@/routes/paths';
+import { useUserContext } from '@/context/AuthContext';
 
 const AuthLayout = () => {
 	const {isAuthenticated} = useUserContext()

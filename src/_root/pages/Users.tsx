@@ -1,5 +1,5 @@
-import { useToast } from '@/components/ui/use-toast.ts';
-import { useGetUsersQuery } from '@/lib/react-query/queries.ts';
+import { useToast } from '@/components/ui/use-toast';
+import { useGetUsersQuery } from '@/lib/react-query/queries';
 import { Loader, UserCard } from '@/components/shared';
 
 const Users = () => {

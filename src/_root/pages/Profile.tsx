@@ -1,10 +1,10 @@
 import { Link, Outlet, Route, Routes, useLocation, useParams } from 'react-router-dom';
-import { useUserContext } from '@/context/AuthContext.tsx';
+import { useUserContext } from '@/context/AuthContext';
 import { useGetUserByIdQuery } from '@/lib/react-query/queries';
 import { GridPostList, Loader } from '@/components/shared';
 import { Button } from '@/components/ui/button';
 import { Liked } from '@/_root/pages';
-import { paths } from '@/routes/paths.ts';
+import { paths } from '@/routes/paths';
 
 interface StabBlockProps {
 	value: string | number;

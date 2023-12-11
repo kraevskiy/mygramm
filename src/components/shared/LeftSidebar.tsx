@@ -1,10 +1,10 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { paths } from '@/routes/paths.ts';
-import { useUserContext } from '@/context/AuthContext.tsx';
+import { paths } from '@/routes/paths';
+import { useUserContext } from '@/context/AuthContext';
 import { sidebarLinks } from '@/constants';
 import { INavLink } from '@/types';
-import { Button } from '@/components/ui/button.tsx';
-import { useSignOutAccountMutation } from '@/lib/react-query/queries.ts';
+import { Button } from '@/components/ui/button';
+import { useSignOutAccountMutation } from '@/lib/react-query/queries';
 
 const LeftSidebar = () => {
 	const {pathname} = useLocation();

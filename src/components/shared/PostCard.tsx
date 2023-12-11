@@ -1,9 +1,9 @@
 import { Models } from 'appwrite';
 import { Link } from 'react-router-dom';
-import { paths } from '@/routes/paths.ts';
-import { multiFormatDateString } from '@/lib/utils.ts';
-import { useUserContext } from '@/context/AuthContext.tsx';
-import { PostStats } from '@/components/shared/index.ts';
+import { paths } from '@/routes/paths';
+import { multiFormatDateString } from '@/lib/utils';
+import { useUserContext } from '@/context/AuthContext';
+import { PostStats } from '@/components/shared/index';
 
 type PostCardProps = {
 	post: Models.Document

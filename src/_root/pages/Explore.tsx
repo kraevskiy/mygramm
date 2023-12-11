@@ -1,6 +1,6 @@
-import { Input } from '@/components/ui/input.tsx';
+import { Input } from '@/components/ui/input';
 import { useEffect, useState } from 'react';
-import { useGetPostInfiniteQuery, useSearchPostsQuery } from '@/lib/react-query/queries.ts';
+import { useGetPostInfiniteQuery, useSearchPostsQuery } from '@/lib/react-query/queries';
 import { Loader, SearchResults, GridPostList } from '@/components/shared';
 import useDebounce from '@/hooks/useDebounce';
 import { useInView } from 'react-intersection-observer';

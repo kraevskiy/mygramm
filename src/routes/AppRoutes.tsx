@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { paths } from './paths.ts';
-import SigninForm from '@/_auth/forms/SigninForm.tsx';
+import { paths } from './paths';
+import SigninForm from '@/_auth/forms/SigninForm';
 import { CreatePost, EditPost, Explore, Home, Liked, PostDetails, Profile, Saved, UpdateProfile, Users } from '@/_root/pages';
-import SignupForm from '@/_auth/forms/SignupForm.tsx';
-import AuthLayout from '@/_auth/AuthLayout.tsx';
-import RootLayout from '@/_root/RootLayout.tsx';
+import SignupForm from '@/_auth/forms/SignupForm';
+import AuthLayout from '@/_auth/AuthLayout';
+import RootLayout from '@/_root/RootLayout';
 
 const AppRoutes = () => {
 

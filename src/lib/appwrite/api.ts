@@ -1,5 +1,5 @@
 import { INewPost, INewUser, INewUserToDB, IUpdatePost, IUpdateUser } from '@/types';
-import { account, appWriteConfig, avatars, databases, storage } from '@/lib/appwrite/config.ts';
+import { account, appWriteConfig, avatars, databases, storage } from '@/lib/appwrite/config';
 import { ID, Query } from 'appwrite';
 
 export async function createUserAccount(user: INewUser) {

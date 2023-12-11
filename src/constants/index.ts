@@ -1,4 +1,4 @@
-import { paths } from '@/routes/paths.ts';
+import { paths } from '@/routes/paths';
 import { INavLink } from '@/types';
 
 export const sidebarLinks: INavLink[] = [
