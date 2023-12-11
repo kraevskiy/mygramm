@@ -11,4 +11,5 @@ export const paths = {
 	updatePost: '/update-post',
 	posts: '/posts',
 	liked: '/liked',
+	likedPosts: '/liked-posts',
 }
